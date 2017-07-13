@@ -1,0 +1,24 @@
+<div>
+
+  <div *ngIf="passenger.party.firstName">
+    <p class="col-sm-12 text-center lead">
+      Hello {{passenger.party.firstName}}! Create you account
+    </p>
+  </div>
+  <div *ngIf="!passenger.party.firstName">
+    <p class="col-sm-12 text-center lead">
+      Hello! Create you account
+    </p>
+  </div>
+
+  <app-passenger-registration
+    [passenger]="passenger"
+    (sendCompleteEvent)="submit()">
+  </app-passenger-registration>
+
+  <div *ngIf="errorMessage">
+    <p class="col-sm-12 alert alert-danger" style="margin-top: 30px">
+      {{errorMessage}}
+    </p>
+  </div>
+</div>

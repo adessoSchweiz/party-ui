@@ -1,0 +1,19 @@
+/**
+ * Created by sascha.ruesing on 19.06.2017.
+ */
+import {Injectable} from '@angular/core';
+import {BaseRequestOptions, RequestOptions} from '@angular/http';
+
+@Injectable()
+export class DefaultRequestOptions extends BaseRequestOptions {
+
+  constructor() {
+    super();
+
+    // Set the defaults
+    this.headers.set('Content-Type', 'application/json');
+    this.headers.set('Accept', 'application/json');
+  }
+}
+
+export const requestOptionsProvider = {provide: RequestOptions, useClass: DefaultRequestOptions};

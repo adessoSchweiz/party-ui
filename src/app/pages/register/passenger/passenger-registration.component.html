@@ -1,0 +1,105 @@
+<div>
+  <div [hidden]="submitted">
+    <form (ngSubmit)="onSubmit()" #passengerRegisterForm="ngForm">
+
+      <md-tab-group>
+        <md-tab label="Basics">
+          <div class="md-tab-content">
+            <p>
+              <md-input-container>
+                <input mdInput required="required" id="login" name="login" type="text" [(ngModel)]="passenger.login" placeholder="Login">
+              </md-input-container>
+              <md-input-container>
+                <input mdInput id="password" required="required" name="password" type="password" [(ngModel)]="passenger.password" placeholder="Password">
+              </md-input-container>
+            </p>
+            <p>
+            <md-input-container>
+              <input mdInput [(ngModel)]="passenger.party.firstName" name="firstName" placeholder="First Name">
+            </md-input-container>
+            <md-input-container>
+              <input mdInput [(ngModel)]="passenger.party.lastName" name="lastName" placeholder="Last Name">
+            </md-input-container>
+            </p>
+            <md-input-container>
+              <input name="birthday" mdInput [(ngModel)]="passenger.party.birthday" [mdDatepicker]="birthdayPicker" placeholder="Birthday">
+              <button mdSuffix [mdDatepickerToggle]="birthdayPicker"></button>
+            </md-input-container>
+            <md-datepicker touchUi="true" startView="year" #birthdayPicker></md-datepicker>
+          </div>
+        </md-tab>
+
+        <md-tab label="Address">
+          <div *ngFor="let contact of passenger.party.contacts" class="md-tab-content">
+
+            <p>
+              <md-select placeholder="Address Type" [(ngModel)]="contact.contactType" name="contactType">
+                <md-option *ngFor="let contactType of contactTypeEnums" [value]="contactType.key">{{ contactType.value }}</md-option>
+              </md-select>
+              <md-input-container>
+                <input mdInput [(ngModel)]="contact.address.country" type="text" name="country" placeholder="Country">
+              </md-input-container>
+            </p>
+
+            <p>
+              <md-input-container>
+                <input mdInput [(ngModel)]="contact.address.street" type="text" name="street" placeholder="Street">
+              </md-input-container>
+              <md-input-container>
+                <input mdInput [(ngModel)]="contact.address.houseNo" type="text" name="houseNo" placeholder="House No.">
+              </md-input-container>
+            </p>
+
+            <p>
+              <md-input-container>
+                <input mdInput [(ngModel)]="contact.address.city" type="text" name="city" placeholder="City">
+              </md-input-container>
+              <md-input-container>
+                <input mdInput [(ngModel)]="contact.address.postalcode" type="text" name="postalcode" placeholder="Postal Code">
+              </md-input-container>
+            </p>
+
+          </div>
+        </md-tab>
+
+        <md-tab label="Credit Card">
+          <div class="md-tab-content">
+            <p>
+              <md-select placeholder="Card Type" [(ngModel)]="passenger.creditCard.cardType" name="creditCardType">
+                <md-option *ngFor="let creditCardType of ccTypeEnums" [value]="creditCardType.key">{{ creditCardType.value }}</md-option>
+              </md-select>
+              <md-input-container>
+                <input mdInput [(ngModel)]="passenger.creditCard.nameOnCard" type="text" name="creditCardNameOnCard" placeholder="Name on card">
+              </md-input-container>
+            </p>
+
+            <p>
+              <md-input-container>
+                <input mdInput [(ngModel)]="passenger.creditCard.cardNumber" type="text" name="creditCardNumber" placeholder="Credit Card Number">
+              </md-input-container>
+              <md-input-container>
+                <input mdInput [(ngModel)]="passenger.creditCard.cardSecretNumber" type="text" name="creditCardSecretNumber" placeholder="Secret Number">
+              </md-input-container>
+            </p>
+
+            <p>
+              <md-input-container>
+                <input mdInput [(ngModel)]="passenger.creditCard.validToMonth" type="number" name="creditCardValidToMonth" placeholder="Valid to month">
+              </md-input-container>
+              <md-input-container>
+                <input mdInput [(ngModel)]="passenger.creditCard.validToYear" type="number" name="creditCardValidToYear" placeholder="Valid to year">
+              </md-input-container>
+            </p>
+          </div>
+        </md-tab>
+
+      </md-tab-group>
+
+      <div class="button-group">
+        <button type="submit" class="btn btn-success" [disabled]="!passengerRegisterForm.form.valid">Register</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
+        <button type="button" routerLink="/" class="btn btn-primary">Back</button>
+      </div>
+    </form>
+  </div>
+</div>

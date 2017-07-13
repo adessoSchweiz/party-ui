@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+
+      <p class="lead">
+        Please sign up or log in!
+      </p>
+      <p style="margin-top: 100px;">
+        <md-input-container>
+          <input mdInput name="login" required="required" type="text" [(ngModel)]="login" placeholder="Login">
+        </md-input-container>
+      </p>
+      <p>
+        <md-input-container>
+          <input mdInput name="password" required="required" type="password" [(ngModel)]="password" placeholder="Password">
+        </md-input-container>
+      </p>
+      <p>
+        <button type="submit" class="btn btn-lg btn-success" [disabled]="!loginForm.form.valid">Log In</button>
+        <button routerLink="/register/passenger" class="btn btn-lg btn-primary">Sign up</button>
+      </p>
+    </form>
+  </div>
+</div>

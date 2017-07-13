@@ -1,0 +1,61 @@
+<div class="container">
+
+  <div *ngIf="loggedInPassenger.login">
+    <p class="col-sm-12 text-center lead">{{loggedInPassenger.login}}, please pick your route</p>
+  </div>
+
+  <div *ngIf="!loggedInPassenger.login">
+    <p class="col-sm-12 text-center lead">Please pick your route</p>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <input id="pickupInput" #pickupInput required placeholder="Start" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control">
+    <input id="dropoffInput" #dropoffInput required placeholder="Destination" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control">
+  </div>
+
+  <agm-map
+    [latitude]="latitude"
+    [longitude]="longitude"
+    [scrollwheel]="true"
+    [zoom]="zoom">
+
+    <agm-marker [latitude]="latitude" [longitude]="longitude" [iconUrl]="iconUrl">
+        <agm-info-window>
+            <strong>You are here</strong>
+        </agm-info-window>
+    </agm-marker>
+
+    <agm-map-directions [origin]="origin" [destination]="destination"></agm-map-directions>
+  </agm-map>
+
+  <div style="margin-top: 20px;">
+
+    <div *ngIf="isRoutePicked() && isRouteValid()">
+      <p>
+        <md-input-container>
+          <input type="text" mdInput disabled="disabled" [(ngModel)]="mapDirective.estimatedTime" name="estimatedTime" placeholder="Estimated travel time">
+        </md-input-container>
+        <md-input-container>
+          <input type="text" mdInput disabled="disabled" [(ngModel)]="mapDirective.estimatedDistance" name="estimatedDistance" placeholder="Estimated travel distance">
+        </md-input-container>
+        <button type="button" (click)="requestRoute()" class="btn btn-primary" style="margin-left: 30px;">Request Pickup</button>
+      </p>
+
+      <p>
+        <md-input-container>
+          <input type="number" min="1" max="10" mdInput [(ngModel)]="numberOfPersons" name="noOfPersons" placeholder="No. of Persons" style="width: 100px;">
+        </md-input-container>
+        <md-input-container>
+          <input type="text" mdInput [(ngModel)]="passengerComment" name="passengerComment" placeholder="Want to leave a message for your driver?" style="width: 300px;">
+        </md-input-container>
+      </p>
+
+      <md-radio-group [(ngModel)]="carType">
+        <md-radio-button value="0">Economic</md-radio-button>
+        <md-radio-button value="1">Standard</md-radio-button>
+        <md-radio-button value="2">Premium</md-radio-button>
+      </md-radio-group>
+    </div>
+
+  </div>
+</div>

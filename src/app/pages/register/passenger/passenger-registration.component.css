@@ -1,0 +1,12 @@
+.md-tab-content {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.md-tab-content md-select,input {
+  width: 190px;
+}
+
+.button-group {
+  margin-top: 30px;
+  margin-left: 20px;
+}

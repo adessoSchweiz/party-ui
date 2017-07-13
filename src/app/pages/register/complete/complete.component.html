@@ -1,0 +1,11 @@
+<div *ngIf="passenger">
+  <div class="row">
+    <p class="col-sm-12 alert alert-success">
+      <strong>Congratulations, {{ passenger.login }}. You successfully registered!</strong>
+    </p>
+  </div>
+  <p>
+    <button routerLink="/requestRoute" class="btn btn-lg btn-success">Request a pickup</button>
+    <button routerLink="/editProfile" class="btn btn-lg btn-primary">Edit your profile</button>
+  </p>
+</div>

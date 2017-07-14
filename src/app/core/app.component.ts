@@ -56,6 +56,10 @@ export class AppComponent implements OnInit, OnDestroy {
         this.router.navigate(['/requestRoute']);
         break;
       }
+      case 'search': {
+        this.router.navigate(['/search']);
+        break;
+      }
       case 'rideHistory': {
         this.router.navigate(['/rideHistory']);
         break;

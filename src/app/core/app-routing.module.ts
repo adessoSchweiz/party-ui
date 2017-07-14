@@ -8,6 +8,7 @@ import {CompleteComponent} from '../pages/register/complete/complete.component';
 import {EditProfileComponent} from "../pages/editProfile/edit-profile-component.component";
 import {RequestRouteComponent} from "../pages/requestRoute/request-route.component";
 import {RideHistoryComponent} from "../pages/rideHistory/ride-history.component";
+import {SearchComponent} from "../pages/search/search.component";
 
 @NgModule({
   imports: [
@@ -37,6 +38,13 @@ import {RideHistoryComponent} from "../pages/rideHistory/ride-history.component"
       {
         path: 'requestRoute',
         component: RequestRouteComponent,
+        canActivate: [
+          AuthGuard
+        ]
+      },
+      {
+        path: 'search',
+        component: SearchComponent,
         canActivate: [
           AuthGuard
         ]

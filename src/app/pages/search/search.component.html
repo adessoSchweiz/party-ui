@@ -1,0 +1,33 @@
+<div class="example-container mat-elevation-z8">
+
+  <md-input-container>
+    <input mdInput placeholder="Search" [formControl]="searchInput">
+  </md-input-container>
+
+  <md-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- ID Column -->
+    <ng-container cdkColumnDef="id">
+      <md-header-cell *cdkHeaderCellDef> ID </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.id}} </md-cell>
+    </ng-container>
+
+    <!-- Login Column -->
+    <ng-container cdkColumnDef="login">
+      <md-header-cell *cdkHeaderCellDef> Login </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.login}} </md-cell>
+    </ng-container>
+
+    <!-- Password Column -->
+    <ng-container cdkColumnDef="password">
+      <md-header-cell *cdkHeaderCellDef> Password </md-header-cell>
+      <md-cell *cdkCellDef="let row" [style.color]="row.color"> {{row.password}} </md-cell>
+    </ng-container>
+
+    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+  </md-table>
+</div>

@@ -1,10 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule, MdNativeDateModule} from '@angular/material';
+import {CdkTableModule} from "@angular/cdk";
 
 import {AppRoutingModule} from './core/app-routing.module';
 
@@ -28,6 +29,8 @@ import {RouteRequestService} from "./services/route-request.service";
 import {EventService} from "./services/events.service";
 import {LoginService} from "./services/login.service";
 import {SnackBarService} from "./services/snackbar.service";
+import {SearchComponent} from './pages/search/search.component';
+import {SearchService} from "./services/search.service";
 
 
 @NgModule({
@@ -40,18 +43,21 @@ import {SnackBarService} from "./services/snackbar.service";
     EditProfileComponent,
     RequestRouteComponent,
     RideHistoryComponent,
-    DirectionsMapDirective
+    DirectionsMapDirective,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    CdkTableModule,
     MdNativeDateModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBH0nNQwCuSEw3ty1qu6Pla7QK_L6Hx9eY',
+      apiKey: 'YOUR_KEY_HERE',
       libraries: ["places"]
     })
   ],
@@ -62,6 +68,7 @@ import {SnackBarService} from "./services/snackbar.service";
     RegistrationService,
     GoogleMapsAPIWrapper,
     RouteRequestService,
+    SearchService,
     SnackBarService
   ],
   bootstrap: [AppComponent]

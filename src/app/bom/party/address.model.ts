@@ -1,8 +1,8 @@
 export abstract class Address {
 
-  id: number;
+  addressId: string;
 
-  constructor(id: number) {
-    this.id = id;
+  constructor(id: string) {
+    this.addressId = id;
   }
 }

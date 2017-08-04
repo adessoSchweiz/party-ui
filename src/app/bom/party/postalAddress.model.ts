@@ -1,14 +1,15 @@
-import {Address} from "./address.model";
+import {Address} from './address.model';
 
 export class PostalAddress extends Address {
 
+  type: string;
   street: string;
   city: string;
   postalcode: string;
   houseNo: string;
   country: string;
 
-  constructor(id: number, street: string, city: string, postalcode: string, houseNo: string, country: string) {
+  constructor(id: string, street: string, city: string, postalcode: string, houseNo: string, country: string) {
     super(id);
     this.street = street;
     this.city = city;
@@ -19,7 +20,8 @@ export class PostalAddress extends Address {
 }
 
 export const initialPostalAddress: PostalAddress = {
-  id: 0,
+  type: 'postalAddress',
+  addressId: '',
   street: '',
   city: '',
   postalcode: '',

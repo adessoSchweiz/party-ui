@@ -1,21 +1,18 @@
-import {Party} from "./party.model";
-import {ContactTypeEnum} from "./contactType";
-import {Address} from "./address.model";
-import {initialPerson} from "./person.model";
-import {initialPostalAddress} from "./postalAddress.model";
+import {Party} from './party.model';
+import {ContactTypeEnum} from './contactType';
+import {Address} from './address.model';
+import {initialPostalAddress} from './postalAddress.model';
 
 export class Contact {
 
-  id: number;
-  party: Party;
+  contactId: string;
   contactType: ContactTypeEnum;
   address: Address;
 }
 
 export const initialContacts: Contact[] = [
   {
-    id: 0,
-    party: initialPerson,
+    contactId: '',
     contactType: ContactTypeEnum.DOMICILE,
     address: initialPostalAddress,
   }

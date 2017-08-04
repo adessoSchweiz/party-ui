@@ -1,20 +1,20 @@
 import {Component, ElementRef, NgZone, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
-import {MapsAPILoader} from "@agm/core";
+import {MapsAPILoader} from '@agm/core';
 import {GoogleMapsAPIWrapper} from '@agm/core';
 
-import {DirectionsMapDirective} from "../../directives/agm-map-directive";
+import {DirectionsMapDirective} from '../../directives/agm-map-directive';
 import {} from '@types/googlemaps';
 
-import {RouteRequest} from "../../bom/routeManagement/routeRequest.model";
-import {RouteRequestService} from "../../services/route-request.service";
-import {Passenger} from "../../bom/party/passenger.model";
-import {CarType} from "../../bom/routeManagement/carType";
-import {LatitudeLongitude} from "../../bom/routeManagement/latitudeLongitude.model";
-import {EventService} from "../../services/events.service";
-import {Subscription} from "rxjs/Subscription";
-import {SnackBarService} from "../../services/snackbar.service";
+import {RouteRequest} from '../../bom/routeManagement/routeRequest.model';
+import {RouteRequestService} from '../../services/route-request.service';
+import {Passenger} from '../../bom/party/passenger.model';
+import {CarType} from '../../bom/routeManagement/carType';
+import {LatitudeLongitude} from '../../bom/routeManagement/latitudeLongitude.model';
+import {EventService} from '../../services/events.service';
+import {Subscription} from 'rxjs/Subscription';
+import {SnackBarService} from '../../services/snackbar.service';
 
 declare const google: any;
 declare const jQuery: any;
@@ -160,7 +160,7 @@ export class RequestRouteComponent implements OnInit, OnDestroy {
     this.estimatedDistance = this.mapDirective.estimatedDistance;
 
     // Build RouteRequest
-    this.routeRequest = new RouteRequest(null, this.loggedInPassenger.id, from, to, this.numberOfPersons, this.carType, this.passengerComment, this.estimatedTime, this.estimatedDistance);
+    this.routeRequest = new RouteRequest(null, this.loggedInPassenger.passengerId, from, to, this.numberOfPersons, this.carType, this.passengerComment, this.estimatedTime, this.estimatedDistance);
 
     // Call backend via REST
     this.routeRequestService.requestRoute(this.routeRequest)

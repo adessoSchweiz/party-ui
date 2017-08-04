@@ -1,39 +1,36 @@
-import {CreditCardType} from "./creditCardType";
+import {CreditCardType} from './creditCardType';
 
 export class CreditCard {
 
-  id: number;
   cardType: CreditCardType;
   nameOnCard: string;
   cardNumber: string;
   validToMonth: number;
   validToYear: number;
-  cardSecretNumber: number;
+  secretNumber: number;
 
-  constructor(id: number,
+  constructor(
               cardType: CreditCardType,
               nameOnCard: string,
               cardNumber: string,
               validToMonth: number,
               validToYear: number,
-              cardSecretNumber: number) {
+              secretNumber: number) {
 
-    this.id = id;
     this.cardType = cardType;
     this.nameOnCard = nameOnCard;
     this.cardNumber = cardNumber;
     this.validToMonth = validToMonth;
     this.validToYear = validToYear;
-    this.cardSecretNumber = cardSecretNumber;
+    this.secretNumber = secretNumber;
   }
 }
 
 export const initialCreditCard: CreditCard = {
-  id: null,
   cardType: CreditCardType.MASTER_CARD,
   nameOnCard: '',
   cardNumber: null,
   validToMonth: 1,
   validToYear: 2020,
-  cardSecretNumber: null
+  secretNumber: null
 };

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Response, RequestOptions} from '@angular/http';
-import {Observable} from "rxjs/Observable";
-import {PartyRole} from "../bom/party/partyRole.model";
+import {Observable} from 'rxjs/Observable';
+import {PartyRole} from '../bom/party/partyRole.model';
 
 @Injectable()
 export class SearchService {

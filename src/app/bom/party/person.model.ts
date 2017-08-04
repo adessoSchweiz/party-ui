@@ -1,26 +1,27 @@
-import {Party} from "./party.model";
-import {Contact, initialContacts} from "./contact.model";
-import {Moment} from "moment";
+import {Party} from './party.model';
+import {Contact, initialContacts} from './contact.model';
+import {Moment} from 'moment';
 import * as moment from 'moment';
 
 export class Person extends Party {
 
-  firstName: string;
-  lastName: string;
+  type: string;
+  firstname: string;
+  lastname: string;
   birthday: Moment;
 
-  constructor(id: number, contacts: Contact[], firstName: string, lastName: string, birthday: Moment) {
-    super(id, contacts);
-    this.firstName = firstName;
-    this.lastName = lastName;
+  constructor(contacts: Contact[], firstname: string, lastname: string, birthday: Moment) {
+    super( contacts);
+    this.firstname = firstname;
+    this.lastname = lastname;
     this.birthday = birthday;
   }
 }
 
 export const initialPerson: Person = {
-  id: 0,
+  type: 'person',
   contacts: initialContacts,
-  firstName: '',
-  lastName: '',
+  firstname: '',
+  lastname: '',
   birthday: moment().subtract(18, 'years')
 };

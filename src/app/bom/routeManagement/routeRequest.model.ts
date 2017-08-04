@@ -6,8 +6,8 @@ import {LatitudeLongitude} from "./latitudeLongitude.model";
 
 export class RouteRequest {
 
-  private id: number;
-  private passengerId: number;
+  private id: string;
+  private passengerId: string;
   private from: LatitudeLongitude;
   private to: LatitudeLongitude;
   private noOfPersons: number;
@@ -17,7 +17,7 @@ export class RouteRequest {
   private estimatedTime: any;
   private estimatedDistance: any;
 
-  constructor(id: number, passengerId: number, from: LatitudeLongitude, to: LatitudeLongitude, noOfPersons: number, carType: CarType, passengerComment:string, estimatedTime: any, estimatedDistance: any) {
+  constructor(id: string, passengerId: string, from: LatitudeLongitude, to: LatitudeLongitude, noOfPersons: number, carType: CarType, passengerComment: string, estimatedTime: any, estimatedDistance: any) {
     this.id = id;
     this.passengerId = passengerId;
     this.from = from;

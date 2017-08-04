@@ -1,11 +1,11 @@
-import {Contact} from "./contact.model";
+import {Contact} from './contact.model';
+
+
 export abstract class Party {
 
-  id: number;
   contacts: Contact[];
 
-  constructor(id: number, contacts: Contact[]) {
-    this.id = id;
+  constructor(contacts: Contact[]) {
     this.contacts = contacts;
   }
 }

@@ -20,7 +20,7 @@ export class RegistrationService {
   register(passenger: Passenger): Observable<Passenger> {
     let options = new RequestOptions();
 
-    return this.http.post(this.registrationBaseURL + 'persons/', {passenger}, options)
+    return this.http.post(this.registrationBaseURL + 'v1/persons/', {passenger}, options)
       .map(this.extractData)
       .catch(this.handleError);
   }

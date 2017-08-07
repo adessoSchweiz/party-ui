@@ -3,3 +3,5 @@
 dist
 jsar.zip
 package-lock.json
+/.settings/
+/.project

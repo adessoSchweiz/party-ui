@@ -13,15 +13,15 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class LoginService {
 
-  private loginBaseURL = '/party/';  // URL to web API
+  private loginBaseURL = 'http://localhost:8091/party-service/resources/party/';  // URL to web API
 
   constructor(private http: Http) {
   }
 
   login(login: string, password: string): Observable<Passenger> {
-    let options = new RequestOptions();
+    const options = new RequestOptions();
 
-    return this.http.post(this.loginBaseURL + 'login/', {login, password}, options)
+    return this.http.post(this.loginBaseURL + 'v1/persons/login', {login, password}, options)
       .map(this.extractData)
       .catch(this.handleError);
   }

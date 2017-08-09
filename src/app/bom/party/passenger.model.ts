@@ -6,12 +6,14 @@ import {Party} from './party.model';
 export class Passenger extends PartyRole {
 
   passengerId: string;
+  version: number;
   creditCard: CreditCard;
 
-  constructor(passengerId: string, party: Party, login: string, password: string, creditCard: CreditCard) {
+  constructor(passengerId: string, version: number, party: Party, login: string, password: string, creditCard: CreditCard) {
     super(party, login, password);
     this.passengerId = passengerId;
     this.creditCard = creditCard;
+    this.version = version;
   }
 }
 
@@ -20,5 +22,6 @@ export const initialPassenger: Passenger = {
   party: initialPerson,
   login: '',
   password: '',
+  version: 0,
   creditCard: initialCreditCard
 };

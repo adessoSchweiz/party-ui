@@ -49,6 +49,7 @@ export class RegisterPassengerComponent implements OnInit {
       .subscribe(
         passenger => {
           this.passenger = passenger;
+          console.log(`response passenger: ${passenger}`);
 
           // Inform other components about successful registration
           this._eventService.register(this.passenger);

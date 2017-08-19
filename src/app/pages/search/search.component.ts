@@ -9,6 +9,7 @@ import {SearchService} from "../../services/search.service";
 import {SnackBarService} from "../../services/snackbar.service";
 import {Passenger} from '../../bom/party/passenger.model';
 import {initialCreditCard} from '../../bom/party/creditCard.model';
+import {initialPerson} from '../../bom/party/person.model';
 import {Driver} from '../../bom/party/driver.model';
 
 import 'rxjs/add/operator/startWith';
@@ -48,9 +49,9 @@ export class SearchComponent implements OnInit {
       );
 
     // TODO remove.....mocks here
-    let partyRole1 = new Passenger('1', 0, null, 'tester1', 'password1', initialCreditCard);
-    let partyRole2 = new Passenger('2', 0, null, 'tester2', 'password2', initialCreditCard);
-    let partyRole3 = new Driver('3', null, 'tester3', 'password3');
+    let partyRole1 = new Passenger('1', initialCreditCard);
+    let partyRole2 = new Passenger('2', initialCreditCard);
+    let partyRole3 = new Driver('3');
     foundPartyRoles.push(partyRole1);
     foundPartyRoles.push(partyRole2);
     foundPartyRoles.push(partyRole3);

@@ -9,7 +9,7 @@ import {} from '@types/googlemaps';
 
 import {RouteRequest} from '../../bom/routeManagement/routeRequest.model';
 import {RouteRequestService} from '../../services/route-request.service';
-import {Passenger} from '../../bom/party/passenger.model';
+import {Person} from '../../bom/party/person.model';
 import {CarType} from '../../bom/routeManagement/carType';
 import {LatitudeLongitude} from '../../bom/routeManagement/latitudeLongitude.model';
 import {EventService} from '../../services/events.service';
@@ -27,7 +27,7 @@ declare const jQuery: any;
 })
 export class RequestRouteComponent implements OnInit, OnDestroy {
 
-  private loggedInPassenger: Passenger;
+  private loggedInPassenger: Person;
   private passengerLoggedInOrRegisteredSubscription: Subscription;
 
   private latitude: number;
@@ -63,7 +63,7 @@ export class RequestRouteComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     // Subscribe for the passenger registration / log in
-    this.passengerLoggedInOrRegisteredSubscription = this._eventService.passengerLoggedInOrRegistered$.subscribe(passenger => this.loggedInPassenger = passenger);
+    this.passengerLoggedInOrRegisteredSubscription = this._eventService.passengerLoggedInOrRegistered$.subscribe((person) => {this.loggedInPassenger = person});
 
     // Set Google Maps defaults
     this.zoom = 4;
@@ -160,7 +160,7 @@ export class RequestRouteComponent implements OnInit, OnDestroy {
     this.estimatedDistance = this.mapDirective.estimatedDistance;
 
     // Build RouteRequest
-    this.routeRequest = new RouteRequest(null, this.loggedInPassenger.passengerId, from, to, this.numberOfPersons, this.carType, this.passengerComment, this.estimatedTime, this.estimatedDistance);
+    this.routeRequest = new RouteRequest(null, this.loggedInPassenger.id, from, to, this.numberOfPersons, this.carType, this.passengerComment, this.estimatedTime, this.estimatedDistance);
 
     // Call backend via REST
     this.routeRequestService.requestRoute(this.routeRequest)

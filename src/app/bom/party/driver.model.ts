@@ -4,11 +4,7 @@ import {Party} from './party.model';
 
 export class Driver extends PartyRole {
 
-  driverId: string;
-
-
-  constructor(driverId: string, party: Party, login: string, password: string) {
-    super(party, login, password);
-    this.driverId = driverId;
+  constructor(id: string) {
+    super(id);
   }
 }

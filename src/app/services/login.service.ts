@@ -4,7 +4,7 @@
 import {Injectable} from "@angular/core";
 import {Http, Response, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs/Observable";
-import {Passenger} from "../bom/party/passenger.model";
+import {Person} from "../bom/party/person.model";
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -18,17 +18,12 @@ export class LoginService {
   constructor(private http: Http) {
   }
 
-  login(login: string, password: string): Observable<Passenger> {
+  login(login: string, password: string): Observable<Person> {
     const options = new RequestOptions();
 
-    return this.http.post(this.loginBaseURL + 'v1/persons/login', {login, password}, options)
-      .map(this.extractData)
+    return this.http.post(this.loginBaseURL + 'persons/login', {login, password}, options)
+      .map(r => JSON.parse(JSON.stringify(r.json())))
       .catch(this.handleError);
-  }
-
-  private extractData(res: Response) {
-    let body = res.json();
-    return body.data || {};
   }
 
   private handleError(error: Response | any) {

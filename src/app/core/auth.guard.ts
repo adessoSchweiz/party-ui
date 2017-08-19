@@ -2,13 +2,13 @@ import {Injectable, OnDestroy, OnInit} from '@angular/core';
 import {Router, CanActivate} from '@angular/router';
 import {EventService} from "../services/events.service";
 import {Subscription} from "rxjs/Subscription";
-import {Passenger} from "../bom/party/passenger.model";
+import {Person} from "../bom/party/person.model";
 
 @Injectable()
 export class AuthGuard implements CanActivate, OnDestroy {
 
   private subscription: Subscription;
-  private loggedInPassenger: Passenger;
+  private loggedInPassenger: Person;
 
   constructor(private router: Router,
               private _eventService: EventService) {
@@ -22,9 +22,11 @@ export class AuthGuard implements CanActivate, OnDestroy {
   }
 
   canActivate() {
-    if (this.loggedInPassenger && this.loggedInPassenger.login) {
+    
+    if(this.loggedInPassenger && this.loggedInPassenger.id) {
       return true;
     }
+    
     this.router.navigate(['/']);
     return false;
   }

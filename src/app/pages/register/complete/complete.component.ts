@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Passenger} from "../../../bom/party/passenger.model";
+import {Person} from "../../../bom/party/person.model";
 import {EventService} from "../../../services/events.service";
 import {Subscription} from "rxjs/Subscription";
 
@@ -9,14 +9,14 @@ import {Subscription} from "rxjs/Subscription";
 })
 export class CompleteComponent implements OnInit, OnDestroy {
 
-  private passenger: Passenger;
+  private person: Person;
   private subscription: Subscription;
 
   constructor(private _eventService: EventService) {
   }
 
   ngOnInit() {
-    this.subscription = this._eventService.passengerLoggedInOrRegistered$.subscribe(passenger => this.passenger = passenger);
+    this.subscription = this._eventService.passengerLoggedInOrRegistered$.subscribe(person => this.person = person);
   }
 
   ngOnDestroy() {

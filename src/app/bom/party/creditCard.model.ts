@@ -28,9 +28,9 @@ export class CreditCard {
 
 export const initialCreditCard: CreditCard = {
   cardType: CreditCardType.MASTER_CARD,
-  nameOnCard: '',
-  cardNumber: null,
+  nameOnCard: 'name',
+  cardNumber: '1111-2222-3333-4444',
   validToMonth: 1,
   validToYear: 2020,
-  secretNumber: null
+  secretNumber: 123
 };

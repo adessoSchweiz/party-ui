@@ -3,7 +3,7 @@ import {Passenger, initialPassenger} from "../../bom/party/passenger.model";
 import {Router} from "@angular/router";
 import {RegistrationService} from "../../services/passenger-registration.service";
 import {EventService} from "../../services/events.service";
-import {Person} from "../../bom/party/person.model";
+import {Person, initialPerson} from "../../bom/party/person.model";
 import * as moment from 'moment';
 
 @Component({
@@ -12,7 +12,7 @@ import * as moment from 'moment';
 })
 export class RegisterPassengerComponent implements OnInit {
 
-  private passenger: Passenger;
+  private person: Person;
   private errorMessage: string;
 
   constructor(private router: Router,
@@ -21,42 +21,42 @@ export class RegisterPassengerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.passenger = initialPassenger;
+    this.person = initialPerson;
+    console.log(this.person);
   }
 
   submit() {
-    console.log(this.passenger);
+    console.log(this.person);
 
-    if (!this.passenger) {
+    if (!this.person) {
       return;
     }
 
     // momentjs stuff
-    if ((<Person>this.passenger.party).birthday) {
-      (<Person>this.passenger.party).birthday = moment((<Person>this.passenger.party).birthday);
+    if (this.person.birthday) {
+      this.person.birthday = moment(this.person.birthday);
     }
     moment.fn.toJSON = function () {
       return this.format("YYYY-MM-DD");
     };
 
     //TODO start: Delete this as soon as backend is ready
-    this._eventService.register(this.passenger);
-    this.router.navigate(['/complete']);
+   // this._eventService.register(this.passenger);
+   // this.router.navigate(['/complete']);
     //TODO end:   Delete this as soon as backend is ready
 
     // Call backend via REST
-    this.registrationService.register(this.passenger)
+    this.registrationService.register(this.person)
       .subscribe(
-        passenger => {
-          this.passenger = passenger;
-          console.log(`response passenger: ${passenger}`);
+        (person) => {
+          this.person = person;
 
           // Inform other components about successful registration
-          this._eventService.register(this.passenger);
+          this._eventService.register(this.person);
 
           // Redirect user to complete page
           this.router.navigate(['/complete']);
         },
-        error => this.errorMessage = <any>error);
+        (error) => this.errorMessage = <any>error);
   }
 }

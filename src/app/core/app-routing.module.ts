@@ -23,23 +23,38 @@ import {SearchComponent} from "../pages/search/search.component";
       },
       {
         path: 'complete',
-        component: CompleteComponent
+        component: CompleteComponent,
+        canActivate: [
+          AuthGuard
+        ]
       },
       {
         path: 'editProfile',
-        component: EditProfileComponent
+        component: EditProfileComponent,
+        canActivate: [
+          AuthGuard
+        ]
       },
       {
         path: 'requestRoute',
-        component: RequestRouteComponent
+        component: RequestRouteComponent,
+        canActivate: [
+          AuthGuard
+        ]
       },
       {
         path: 'search',
-        component: SearchComponent
+        component: SearchComponent,
+        canActivate: [
+          AuthGuard
+        ]
       },
       {
         path: 'rideHistory',
-        component: RideHistoryComponent
+        component: RideHistoryComponent,
+        canActivate: [
+          AuthGuard
+        ]
       },
       {
         path: '**',

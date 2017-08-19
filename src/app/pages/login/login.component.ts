@@ -24,14 +24,15 @@ export class LoginComponent {
 
     // Call backend via REST
     this.loginService.login(this.login, this.password)
-      .subscribe(passenger => {
+      .subscribe(
+         (person) => {
           // Inform components about logged in passenger
-          this._eventService.login(passenger);
+          this._eventService.login(person);
 
           // Redirect user to request route page
           this.router.navigate(['/requestRoute']);
         },
-        error => this.snackBarService.openSnackBar('Invalid credentials')
+        (error) => this.snackBarService.openSnackBar('Invalid credentials')
       );
   }
 }

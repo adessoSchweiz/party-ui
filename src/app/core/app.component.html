@@ -1,13 +1,13 @@
 <md-sidenav-container>
 
   <md-sidenav #menu mode="over" opened="false" (click)="menu.close()">
-    <md-card *ngIf="!loggedInPassenger || (loggedInPassenger && !loggedInPassenger.login)" (click)="navigateTo('login')">Log In</md-card>
-    <md-card *ngIf="!loggedInPassenger || (loggedInPassenger && !loggedInPassenger.login)" (click)="navigateTo('register/passenger')">Register</md-card>
-    <md-card *ngIf="loggedInPassenger  && loggedInPassenger.login" (click)="navigateTo('requestRoute')">Request a pickup</md-card>
-    <md-card *ngIf="loggedInPassenger  && loggedInPassenger.login" (click)="navigateTo('editProfile')">My Profile</md-card>
-    <md-card *ngIf="loggedInPassenger  && loggedInPassenger.login" (click)="navigateTo('rideHistory')">My Rides</md-card>
-    <md-card *ngIf="loggedInPassenger  && loggedInPassenger.login" (click)="navigateTo('search')">Search</md-card>
-    <md-card *ngIf="loggedInPassenger  && loggedInPassenger.login" (click)="navigateTo('logout')">Logout</md-card>
+    <md-card *ngIf="!isLoggedIn" (click)="navigateTo('login')">Log In</md-card>
+    <md-card *ngIf="!isLoggedIn" (click)="navigateTo('register/passenger')">Register</md-card>
+    <md-card *ngIf="isLoggedIn" (click)="navigateTo('requestRoute')">Request a pickup</md-card>
+    <md-card *ngIf="isLoggedIn" (click)="navigateTo('editProfile')">My Profile</md-card>
+    <md-card *ngIf="isLoggedIn" (click)="navigateTo('rideHistory')">My Rides</md-card>
+    <md-card *ngIf="isLoggedIn" (click)="navigateTo('search')">Search</md-card>
+    <md-card *ngIf="isLoggedIn" (click)="navigateTo('logout')">Logout</md-card>
   </md-sidenav>
 
   <md-toolbar color="primary">
@@ -16,9 +16,9 @@
     </span>
     <!-- This fills the remaining space of the current row -->
     <span class="example-fill-remaining-space"></span>
-    <span *ngIf="loggedInPassenger"><h5>{{loggedInPassenger.login}}</h5></span>
+    <span *ngIf="isLoggedIn"><h5>{{login}}</h5></span>
   </md-toolbar>
-
+ 
   <div class="rebu-content">
     <router-outlet></router-outlet>
   </div>

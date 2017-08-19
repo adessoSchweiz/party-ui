@@ -22,9 +22,9 @@ export class PostalAddress extends Address {
 export const initialPostalAddress: PostalAddress = {
   type: 'postalAddress',
   addressId: '',
-  street: '',
-  city: '',
-  postalcode: '',
-  houseNo: '',
-  country: ''
+  street: 'street',
+  city: 'city',
+  postalcode: '1234',
+  houseNo: '12A',
+  country: 'country'
 };

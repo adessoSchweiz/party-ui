@@ -7,22 +7,22 @@
           <div class="md-tab-content">
             <p>
               <md-input-container>
-                <input mdInput required="required" id="login" name="login" type="text" [(ngModel)]="passenger.login" placeholder="Login">
+                <input mdInput required="required" id="login" name="login" type="text" [(ngModel)]="person.login" placeholder="Login">
               </md-input-container>
               <md-input-container>
-                <input mdInput id="password" required="required" name="password" type="password" [(ngModel)]="passenger.password" placeholder="Password">
+                <input mdInput id="password" required="required" name="password" type="password" [(ngModel)]="person.password" placeholder="Password">
               </md-input-container>
             </p>
             <p>
             <md-input-container>
-              <input mdInput [(ngModel)]="passenger.party.firstname" name="firstName" placeholder="First Name">
+              <input mdInput [(ngModel)]="person.firstname" name="firstName" placeholder="First Name">
             </md-input-container>
             <md-input-container>
-              <input mdInput [(ngModel)]="passenger.party.lastname" name="lastName" placeholder="Last Name">
+              <input mdInput [(ngModel)]="person.lastname" name="lastName" placeholder="Last Name">
             </md-input-container>
             </p>
             <md-input-container>
-              <input name="birthday" mdInput [(ngModel)]="passenger.party.birthday" [mdDatepicker]="birthdayPicker" placeholder="Birthday">
+              <input name="birthday" mdInput [(ngModel)]="person.birthday" [mdDatepicker]="birthdayPicker" placeholder="Birthday">
               <button mdSuffix [mdDatepickerToggle]="birthdayPicker"></button>
             </md-input-container>
             <md-datepicker touchUi="true" startView="year" #birthdayPicker></md-datepicker>
@@ -30,7 +30,7 @@
         </md-tab>
 
         <md-tab label="Address">
-          <div *ngFor="let contact of passenger.party.contacts" class="md-tab-content">
+          <div *ngFor="let contact of person.contacts" class="md-tab-content">
 
             <p>
               <md-select placeholder="Address Type" [(ngModel)]="contact.contactType" name="contactType">
@@ -65,29 +65,29 @@
         <md-tab label="Credit Card">
           <div class="md-tab-content">
             <p>
-              <md-select placeholder="Card Type" [(ngModel)]="passenger.creditCard.cardType" name="creditCardType">
+              <md-select placeholder="Card Type" [(ngModel)]="person.partyRoles[0].creditCard.cardType" name="creditCardType">
                 <md-option *ngFor="let creditCardType of ccTypeEnums" [value]="creditCardType.key">{{ creditCardType.value }}</md-option>
               </md-select>
               <md-input-container>
-                <input mdInput [(ngModel)]="passenger.creditCard.nameOnCard" type="text" name="creditCardNameOnCard" placeholder="Name on card">
+                <input mdInput [(ngModel)]="person.partyRoles[0].creditCard.nameOnCard" type="text" name="creditCardNameOnCard" placeholder="Name on card">
               </md-input-container>
             </p>
 
             <p>
               <md-input-container>
-                <input mdInput [(ngModel)]="passenger.creditCard.cardNumber" type="text" name="creditCardNumber" placeholder="Credit Card Number">
+                <input mdInput [(ngModel)]="person.partyRoles[0].creditCard.cardNumber" type="text" name="creditCardNumber" placeholder="Credit Card Number">
               </md-input-container>
               <md-input-container>
-                <input mdInput [(ngModel)]="passenger.creditCard.secretNumber" type="text" name="creditCardSecretNumber" placeholder="Secret Number">
+                <input mdInput [(ngModel)]="person.partyRoles[0].creditCard.secretNumber" type="text" name="creditCardSecretNumber" placeholder="Secret Number">
               </md-input-container>
             </p>
 
             <p>
               <md-input-container>
-                <input mdInput [(ngModel)]="passenger.creditCard.validToMonth" type="number" name="creditCardValidToMonth" placeholder="Valid to month">
+                <input mdInput [(ngModel)]="person.partyRoles[0].creditCard.validToMonth" type="number" name="creditCardValidToMonth" placeholder="Valid to month">
               </md-input-container>
               <md-input-container>
-                <input mdInput [(ngModel)]="passenger.creditCard.validToYear" type="number" name="creditCardValidToYear" placeholder="Valid to year">
+                <input mdInput [(ngModel)]="person.partyRoles[0].creditCard.validToYear" type="number" name="creditCardValidToYear" placeholder="Valid to year">
               </md-input-container>
             </p>
           </div>

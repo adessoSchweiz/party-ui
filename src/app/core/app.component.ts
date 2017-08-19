@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {Passenger} from "../bom/party/passenger.model";
+import {Person} from "../bom/party/person.model";
 import {EventService} from "../services/events.service";
 import {Subscription} from "rxjs/Subscription";
 import {SnackBarService} from "../services/snackbar.service";
@@ -11,7 +11,8 @@ import {SnackBarService} from "../services/snackbar.service";
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  private loggedInPassenger: Passenger;
+  private isLoggedIn = false;
+  private login: string = '';
   private subscription: Subscription;
 
   constructor(private router: Router,
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscription = this._eventService.passengerLoggedInOrRegistered$.subscribe(passenger => this.setPassengerAsLoggedInPassenger(passenger));
+    this.subscription = this._eventService.passengerLoggedInOrRegistered$
+                                  .subscribe((person) => this.setPassengerAsLoggedInPassenger(person));
   }
 
   ngOnDestroy() {
@@ -28,8 +30,13 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  private setPassengerAsLoggedInPassenger(passenger: Passenger) {
-    this.loggedInPassenger = passenger;
+  private setPassengerAsLoggedInPassenger(person: Person) {
+    this.isLoggedIn = person != null && person.id != null && person.id != '';
+    if(this.isLoggedIn) {
+ 	   this.login = person.login;
+    } else {
+    	this.login = null;
+    }
   }
 
   private navigateTo(target: string) {

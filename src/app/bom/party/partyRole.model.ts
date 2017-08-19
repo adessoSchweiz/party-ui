@@ -2,13 +2,9 @@ import { Party } from './party.model';
 
 export abstract class PartyRole {
 
-    party: Party;
-    login: string;
-    password: string;
+    id: string;
 
-    constructor(party: Party, login: string, password: string ) {
-        this.party = party;
-        this.login = login;
-        this.password = password;
+    constructor(id: string) {
+        this.id = id;
     }
 }

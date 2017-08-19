@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Person} from "../../../bom/party/person.model";
 import {Passenger} from "../../../bom/party/passenger.model";
 
 @Component({
@@ -9,7 +10,7 @@ import {Passenger} from "../../../bom/party/passenger.model";
 export class PassengerRegistrationComponent {
 
   @Input()
-  passenger: Passenger;
+  person: Person;
 
   @Output()
   sendCompleteEvent = new EventEmitter();

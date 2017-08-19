@@ -15,13 +15,8 @@ export class SearchService {
     let options = new RequestOptions();
 
     return this.http.post(this.searchRequestBaseURL, {query}, options)
-      .map(this.extractData)
+      .map(r => r.json())
       .catch(this.handleError);
-  }
-
-  private extractData(res: Response) {
-    let body = res.json();
-    return body.data || {};
   }
 
   private handleError(error: Response | any) {

@@ -57,7 +57,7 @@ import {SearchService} from "./services/search.service";
     CdkTableModule,
     MdNativeDateModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBDxOhqc_IjqKkHAXleawn6aiOtXaV-tcA',
+      apiKey: 'AIzaSyAmxZpAniZbJBozvSrG0YyMi-8WNOtfx18',
       libraries: ["places"]
     })
   ],

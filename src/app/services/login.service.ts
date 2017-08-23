@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class LoginService {
 
-  private loginBaseURL = 'http://localhost:8091/party-service/resources/party/';  // URL to web API
+  private loginBaseURL = 'http://party-service-myproject.127.0.0.1.nip.io/resources/party/';  // URL to web API
 
   constructor(private http: Http) {
   }

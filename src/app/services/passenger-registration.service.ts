@@ -13,7 +13,7 @@ export class RegistrationService {
   // Wiki -> PUT - /party/(persons | organisations | roles | contacts | relations | addresses)/id - Die ID's werden in der UI als GUID's generiert
   // (a | b |...) Notaion bedeutet hier, dass eine der Resources "persons", "organisations", usw., zB.: /party/persons/ oder /party/addresses angegeben werden muss.
 
-  private registrationBaseURL = 'http://localhost:8091/party-service/resources/party/';  // URL to web API
+  private registrationBaseURL = 'http://party-service-myproject.127.0.0.1.nip.io/resources/party/';  // URL to web API
 
   constructor(private http: Http) {
   }

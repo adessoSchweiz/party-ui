@@ -14,7 +14,7 @@ export class RouteRequestService {
 
   // Wiki -> ....
 
-  private routeRequestBaseURL = '/route/request/';  // URL to web API
+  private routeRequestBaseURL = 'http://route-service-myproject.127.0.0.1.nip.io/resources/route/requests';  // URL to web API
 
   constructor(private http: Http) {
   }
@@ -22,7 +22,7 @@ export class RouteRequestService {
   requestRoute(routeRequest: RouteRequest): Observable<RouteRequest> {
     let options = new RequestOptions();
 
-    return this.http.post(this.routeRequestBaseURL, {routeRequest}, options)
+    return this.http.post(this.routeRequestBaseURL, routeRequest, options)
       .map(r => r.json())
       .catch(this.handleError);
   }

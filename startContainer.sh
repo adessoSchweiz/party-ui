@@ -9,5 +9,3 @@ docker run -d \
   --name ${CONTAINER_NAME} \
   -p 8888:8080 \
   adesso/party-ui-angular:1.0.0
-
-docker logs -f ${CONTAINER_NAME}
